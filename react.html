@@ -25,6 +25,7 @@
     <main>
         <div id="root"></div>
         </main>
+
     <script type="text/babel">
         function App() {
             const [personas, setPersonas] = React.useState([]);
@@ -34,6 +35,24 @@
 
             const manejarCambio = (e) => {
                 setForm({ ...form, [e.target.name]: e.target.value });
+            };
+
+             const agregarPersona = (e) => {
+                e.preventDefault();
+                const imcCalculado = (parseFloat(form.peso) / (parseFloat(form.altura) * parseFloat(form.altura))).toFixed(2);
+                
+                const nuevaPersona = { 
+                    ...form, 
+                    id: Date.now(),
+                    imc: imcCalculado 
+                };
+                
+                setPersonas([...personas, nuevaPersona]);
+                setForm({ nombre: '', apellido: '', edad: '', altura: '', peso: '' });
+            };
+
+            const eliminarPersona = (id) => {
+                setPersonas(personas.filter(p => p.id !== id));
             };
 
             return (
@@ -60,7 +79,19 @@
                                 <th>Acción</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody>
+                            {personas.map((p) => (
+                                <tr key={p.id}>
+                                    <td>{p.nombre}</td>
+                                    <td>{p.apellido}</td>
+                                    <td>{p.edad}</td>
+                                    <td>{p.altura}</td>
+                                    <td>{p.peso}</td>
+                                    <td><strong>{p.imc}</strong></td>
+                                    <td><button className="btn-eliminar" onClick={() => eliminarPersona(p.id)}>Eliminar</button></td>
+                                </tr>
+                            ))}
+                        </tbody>
                     </table>
                 </div>
             );
