@@ -26,7 +26,48 @@
         <div id="root"></div>
         </main>
     <script type="text/babel">
-        
+        function App() {
+            const [personas, setPersonas] = React.useState([]);
+            const [form, setForm] = React.useState({
+                nombre: '', apellido: '', edad: '', altura: '', peso: ''
+            });
+
+            const manejarCambio = (e) => {
+                setForm({ ...form, [e.target.name]: e.target.value });
+            };
+
+            return (
+                <div>
+                    <h2>Registro de Personas (React)</h2>
+                    <form>
+                        <input name="nombre" value={form.nombre} onChange={manejarCambio} placeholder="Nombre" required />
+                        <input name="apellido" value={form.apellido} onChange={manejarCambio} placeholder="Apellido" required />
+                        <input name="edad" type="number" value={form.edad} onChange={manejarCambio} placeholder="Edad" required />
+                        <input name="altura" type="number" step="0.01" value={form.altura} onChange={manejarCambio} placeholder="Altura (ej: 1.75)" required />
+                        <input name="peso" type="number" value={form.peso} onChange={manejarCambio} placeholder="Peso (kg)" required />
+                        <button type="submit">Agregar</button>
+                    </form>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Edad</th>
+                                <th>Altura (m)</th>
+                                <th>Peso (kg)</th>
+                                <th>IMC</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
     </script>
 </body>
 </html>
