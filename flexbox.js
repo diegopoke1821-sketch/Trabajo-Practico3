@@ -21,4 +21,11 @@ function renderizarTarjetas(lista) {
     });
 }
 
+btnFiltrar.addEventListener("click", () => {
+    const filtrados = inventario.filter(item => item.categoria === "Moto");
+    renderizarTarjetas(filtrados);
+});
+
+btnTodos.addEventListener("click", () => renderizarTarjetas(inventario));
+
 renderizarTarjetas(inventario);
