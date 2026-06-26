@@ -118,3 +118,13 @@ th, td {
 }
 
 th { background-color: #74ACDF; color: white; }
+
+/*  Botón Eliminar */
+.btn-eliminar {
+    background-color: #dc3545;
+}
+
+.btn-eliminar:hover {
+    background-color: #c82333;
+    color: white;
+}

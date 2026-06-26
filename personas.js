@@ -22,8 +22,12 @@ form.addEventListener("submit", function(e) {
         <td>${altura}</td>
         <td>${peso}</td>
         <td><strong>${imc}</strong></td>
-        <td class="celda-accion"></td>
+        <td><button class="btn-eliminar">Eliminar</button></td>
     `;
+    const btnEliminar = fila.querySelector(".btn-eliminar");
+    btnEliminar.addEventListener("click", () => {
+        fila.remove();
+    });
 
     tablaCuerpo.appendChild(fila);
     form.reset(); // Limpia los inputs
