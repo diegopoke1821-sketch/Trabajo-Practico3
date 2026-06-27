@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP3 - Programación</title>
+    <title>Ejercicio 3 - React</title>
     <link rel="stylesheet" href="style.css">
 
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <h1>Trabajo Practico - Programación</h1>
+        <h1>Ejercicio 3: Tabla con React</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
@@ -58,7 +58,7 @@
             return (
                 <div>
                     <h2>Registro de Personas (React)</h2>
-                    <form>
+                    <form onSubmit={agregarPersona}>
                         <input name="nombre" value={form.nombre} onChange={manejarCambio} placeholder="Nombre" required />
                         <input name="apellido" value={form.apellido} onChange={manejarCambio} placeholder="Apellido" required />
                         <input name="edad" type="number" value={form.edad} onChange={manejarCambio} placeholder="Edad" required />
